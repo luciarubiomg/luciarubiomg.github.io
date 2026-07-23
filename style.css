@@ -633,144 +633,14 @@ section { padding: 96px 6vw; }
 .modal-glass__gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-auto-rows: max-content;
-  align-items: start;
-  gap: 28px 20px;
-}
-
-.modal-glass__item {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-glass__item img,
-.modal-glass__media {
-  display: block;
-  width: 100%;
-  height: 170px;
-  border-radius: var(--radius);
-  border: 2px solid var(--dark-brown);
-  margin-bottom: 10px;
-  background: var(--dark-brown);
+  gap: 20px;
 }
 
 .modal-glass__item img {
-  object-fit: cover;
-  object-position: top center;
-  cursor: zoom-in;
-  transition: filter .25s var(--ease);
-}
-
-.modal-glass__item img:hover {
-  filter: brightness(.92);
-}
-
-.modal-glass__media {
-  position: relative;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-.modal-glass__media video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  pointer-events: none;
-}
-
-.modal-glass__play {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 52px; height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 252, 248, .92);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
   border: 2px solid var(--dark-brown);
-  color: var(--dark-brown);
-  font-size: 1.1rem;
-  padding-left: 4px;
-  transition: transform .25s var(--bounce), background .25s var(--ease);
-}
-
-.modal-glass__media:hover .modal-glass__play {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: var(--yellow);
-}
-
-/* =========================================================
-   LIGHTBOX (ver imagen completa)
-   ========================================================= */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  background: rgba(20, 12, 8, .88);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s var(--ease), visibility .3s;
-}
-
-.lightbox-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-overlay img,
-.lightbox-overlay video {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-  transform: scale(.94);
-  transition: transform .3s var(--ease);
-}
-
-.lightbox-overlay.is-open img,
-.lightbox-overlay.is-open video {
-  transform: scale(1);
-}
-
-.lightbox-overlay img { display: none; }
-.lightbox-overlay video { display: none; }
-.lightbox-overlay.mode-image img { display: block; }
-.lightbox-overlay.mode-video video { display: block; }
-
-.lightbox-close {
-  position: fixed;
-  top: 20px; right: 24px;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--bg-main);
-  background: transparent;
-  color: var(--bg-main);
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
-}
-
-.lightbox-close:hover {
-  background: var(--bg-main);
-  color: var(--dark-brown);
-  transform: rotate(90deg);
-}
-
-.modal-glass__item figcaption {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .modal-glass__item h4 {
@@ -785,14 +655,13 @@ section { padding: 96px 6vw; }
   font-size: .85rem;
 }
 
-
 /* =========================================================
    SOBRE MÍ
    ========================================================= */
 .about {
   display: flex;
   justify-content: center;
-  min-height: 450px;
+  height: 450px;
   padding-top: 0;
 }
 
@@ -1055,7 +924,6 @@ ul.about__skills li:hover {
   .hero__media { flex-basis: auto; }
   .hero__logo { width: 170px; }
   .categories__grid { grid-template-columns: 1fr; gap: 32px; }
-  .cat-card__frame { aspect-ratio: 2.4 / 1; padding: 22px; }
   .modal-glass { padding: 28px; }
   .nav__links { gap: 18px; font-size: .82rem; }
   .nav__cta { padding: 6px 14px; }
@@ -1067,8 +935,6 @@ ul.about__skills li:hover {
   .nav__links a:not(.nav__cta) { display: none; }
   .hero { padding-top: 48px; padding-bottom: 56px; }
   .modal-glass__gallery { grid-template-columns: 1fr; }
-  .modal-glass__item img,
-  .modal-glass__media { height: 210px; }
   .contact__actions { flex-direction: column; width: 100%; }
   .btn { width: 100%; text-align: center; }
 }
