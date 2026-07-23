@@ -53,28 +53,30 @@
         }
       ]
     },
-    posters: {
+posters: {
       eyebrow: "Categoría · Posters",
       title: "Posters & Gráfica Impresa",
-      intro: "Cartelería y piezas gráficas clave para campañas promocionales e identidad visual.",
+      intro: "Sección en mantenimiento. Estoy actualizando el portfolio con los proyectos más recientes.",
       projects: [
         {
-          img: "https://i.ibb.co/Fkjtcr2M/POSTERS.png",
-          title: "Serie de carteles promocionales",
-          desc: "Campaña visual con aplicación gráfica en gran formato."
+          img: "assets/img/en_obras.jpg", // <-- Aquí pon la ruta de tu imagen estilo 'en obras'
+          title: "Sección en proceso de actualización 🛠️",
+          desc: "Muy pronto podrás ver los nuevos diseños de cartelería y gráfica impresa."
         }
       ]
     },
     social: {
       eyebrow: "Categoría · Social Media",
       title: "Social Media & Banners",
-      intro: "Identidad visual, set de banners y contenido dinámico diseñado para maximizar el engagment en redes.",
+      intro: "¡Me están actualizando! Estoy preparando los mejores contenidos para mostrarte.",
       projects: [
         {
-          img: "https://i.ibb.co/KcTtZWtV/BRANDING.png",
-          title: "Identidad de marca en redes",
-          desc: "Sistema visual unificado y adaptaciones multicanal."
-        },
+          img: "assets/img/en_obras.jpg", // <-- Puedes usar la misma imagen o una diferente
+          title: "Contenido en preparación 🚧",
+          desc: "Estoy seleccionando las mejores piezas y campañas para redes sociales."
+        }
+      ]
+    }
         {
           img: "https://i.ibb.co/vCLfhWNV/IA.png",
           title: "Contenido creativo & Ads",
