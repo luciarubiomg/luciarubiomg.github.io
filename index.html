@@ -101,28 +101,29 @@
    
   </article>
 
-<!-- POSTERS -->
-<article class="cat-card cat-card--lavender js-reveal is-disabled" data-categoria="posters" style="--reveal-delay:.16s">
-  <div class="cat-card__frame">
-    <span class="cat-card__icon cat-card__icon--sun" aria-hidden="true">
-      <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-    </span>
-    <span class="cat-card__big">Posters</span>
-    <span class="badge-wip badge-wip--left">🚧 ACTUALIZANDO</span>
-  </div>
-</article>
+  <article class="cat-card cat-card--lavender js-reveal is-disabled" data-categoria="posters" style="--reveal-delay:.16s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--sun" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Posters</span>
+      
+      <!-- Cartel sobrepuesto -->
+      <span class="badge-wip badge-wip--left">🚧 ACTUALIZANDO</span>
+    </div>
+  </article>
 
-<!-- SOCIAL MEDIA -->
-<article class="cat-card cat-card--yellow js-reveal is-disabled" data-categoria="social" style="--reveal-delay:.24s">
-  <div class="cat-card__frame">
-    <span class="cat-card__icon cat-card__icon--dots" aria-hidden="true">
-      <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-    </span>
-    <span class="cat-card__big">Social Media</span>
-    <span class="badge-wip badge-wip--right">🚧 ACTUALIZANDO</span>
-  </div>
-</article>
-
+  <article class="cat-card cat-card--yellow js-reveal is-disabled" data-categoria="social" style="--reveal-delay:.24s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--dots" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Social Media</span>
+      
+      <!-- Cartel sobrepuesto -->
+      <span class="badge-wip badge-wip--right">🚧 ACTUALIZANDO</span>
+    </div>
+  </article>
 </div>
 </section>
 
@@ -231,6 +232,13 @@
     <div class="modal-glass__gallery" id="modalGallery"></div>
   </div>
 </div>
+
+<div id="imageLightbox" class="lightbox-overlay" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <video id="lightboxVideo" controls playsinline></video>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
