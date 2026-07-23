@@ -1,153 +1,234 @@
-(function () {
-  "use strict";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucía Rubio — DISEÑO GRÁFICO & DIGITAL</title>
+<meta name="description" content="Portfolio de Lucía Rubio, diseñadora gráfica especializada en diseño digital, landing pages y campañas para e-commerce.">
 
-  /* 1. Scroll Reveal */
-  const revealEls = document.querySelectorAll(".js-reveal");
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("is-visible");
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  /* 2. Contenido de cada categoría de proyectos */
-  const categorias = {
-    web: {
-      eyebrow: "Categoría · Web & UX/UI",
-      title: "Web & Landing Pages",
-      intro: "Landing pages y sitios pensados para convertir, optimizando la experiencia de usuario y el rendimiento comercial.",
-      projects: [
-        {
-          img: "assets/img/web/iphone16.jpg",
-          title: "Lanzamiento iPhone 16 & Campaña reNuevos",
-          desc: "Diseño de landing page promocional y arquitectura de catálogo en parrilla optimizada para e-commerce."
-        },
-        {
-          img: "assets/img/web/samsung.jpg",
-          title: "Galaxy Unpacked",
-          desc: "Landing para evento en directo e integración de reproductor para streaming oficial."
-        },
-        {
-          img: "assets/img/web/sorteo.jpg",
-          title: "Captación de Leads: Sorteo & Calculadora",
-          desc: "Diseño UX/UI de formularios dinámicos y landings para captación de usuarios."
-        }
-      ]
-    },
-    motion: {
-      eyebrow: "Categoría · Motion Graphics y Vídeo",
-      title: "Motion Graphics y Vídeo",
-      intro: "Piezas animadas y contenido audiovisual diseñado para potenciar campañas digitales y redes sociales.",
-      projects: [
-        {
-          // Puedes usar 'video' para archivos MP4 o 'img' si es una portada/gif
-          video: "assets/video/motion/reel.mp4",
-          img: "https://i.ibb.co/bMn9PvbZ/MOTION.png",
-          title: "Motion para campaña",
-          desc: "Animación 2D/3D desarrollada para redes sociales."
-        },
-        {
-          img: "https://i.ibb.co/7t9XM03D/VIDEO.png",
-          title: "Edición de vídeo promocional",
-          desc: "Contenido audiovisual dinámico adaptado a formatos digitales."
-        }
-      ]
-    },
-    posters: {
-      eyebrow: "Categoría · Posters",
-      title: "Posters & Gráfica Impresa",
-      intro: "Cartelería y piezas gráficas clave para campañas promocionales e identidad visual.",
-      projects: [
-        {
-          img: "https://i.ibb.co/Fkjtcr2M/POSTERS.png",
-          title: "Serie de carteles promocionales",
-          desc: "Campaña visual con aplicación gráfica en gran formato."
-        }
-      ]
-    },
-    social: {
-      eyebrow: "Categoría · Social Media",
-      title: "Social Media & Banners",
-      intro: "Identidad visual, set de banners y contenido dinámico diseñado para maximizar el engagment en redes.",
-      projects: [
-        {
-          img: "https://i.ibb.co/KcTtZWtV/BRANDING.png",
-          title: "Identidad de marca en redes",
-          desc: "Sistema visual unificado y adaptaciones multicanal."
-        },
-        {
-          img: "https://i.ibb.co/vCLfhWNV/IA.png",
-          title: "Contenido creativo & Ads",
-          desc: "Piezas visuales y banners publicitarios enfocados en CTR."
-        }
-      ]
-    }
-  };
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav fade-in" style="--delay:0s">
+  <a href="#top" class="nav__logo">
+    <span>Lucia Rubio</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#cv">CV</a>
+    <a href="#contacto" class="nav__cta">Contacto</a>
+  </nav>
+</header>
 
-  /* 3. Modal de proyectos (glassmorphism) */
-  const modal = document.getElementById("categoryModal");
-  const modalEyebrow = document.getElementById("modalEyebrow");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalIntro = document.getElementById("modalIntro");
-  const modalGallery = document.getElementById("modalGallery");
-  const modalClose = document.getElementById("modalClose");
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero__inner">
 
-  function abrirModal(clave) {
-    const data = categorias[clave];
-    if (!data) return;
+    <!-- Columna izquierda: título y texto -->
+    <div class="hero__content">
+      <span class="hero__eyebrow">✦ Diseñadora gráfica · Madrid</span>
+      <h1>DISEÑO <span class="text-pop">GRÁFICO</span><br>&amp; <span class="text-outline">DIGITAL</span></h1>
+      <p>Landing pages, campañas multicanal y contenido visual para e-commerce, con criterios de UX/UI pensados para el rendimiento.</p>
+      
+    </div>
 
-    modalEyebrow.textContent = data.eyebrow;
-    modalTitle.textContent = data.title;
-    modalIntro.textContent = data.intro;
+    
 
-    // Generar dinámicamente imágenes o vídeos según lo configurado en cada proyecto
-    modalGallery.innerHTML = data.projects.map(p => {
-      let mediaHTML = "";
-      if (p.video) {
-        mediaHTML = `
-          <video controls playsinline poster="${p.img || ''}">
-            <source src="${p.video}" type="video/mp4">
-            Tu navegador no soporta la reproducción de vídeo.
-          </video>`;
-      } else {
-        mediaHTML = `<img src="${p.img}" alt="${p.title}" loading="lazy">`;
-      }
+  </div>
+</section>
 
-      return `
-        <figure class="modal-glass__item">
-          ${mediaHTML}
-          <figcaption>
-            <h4>${p.title}</h4>
-            <p>${p.desc}</p>
-          </figcaption>
-        </figure>
-      `;
-    }).join("");
+<!-- ===== PROYECTOS ===== -->
+<section id="proyectos" class="work">
 
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
+  <div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="chip chip--coral">LANDING PAGES</span>
+    <span class="chip chip--lavender">DISEÑO DIGITAL</span>
+    <span class="chip chip--ink">CAMPAÑAS E-COMMERCE</span>
+    <span class="chip chip--yellow">UX/UI</span>
+    <span class="chip chip--mint">EMAIL MARKETING</span>
+    <span class="chip chip--coral">MOTION GRAPHICS</span>
+    <!-- Repites el bloque para que el bucle infinito no se corte -->
+    <span class="chip chip--coral">LANDING PAGES</span>
+    <span class="chip chip--lavender">DISEÑO DIGITAL</span>
+    <span class="chip chip--ink">CAMPAÑAS E-COMMERCE</span>
+    <span class="chip chip--yellow">UX/UI</span>
+    <span class="chip chip--mint">EMAIL MARKETING</span>
+    <span class="chip chip--coral">MOTION GRAPHICS</span>
+	  <!-- Repites el bloque para que el bucle infinito no se corte -->
+    <span class="chip chip--coral">LANDING PAGES</span>
+    <span class="chip chip--lavender">DISEÑO DIGITAL</span>
+    <span class="chip chip--ink">CAMPAÑAS E-COMMERCE</span>
+    <span class="chip chip--yellow">UX/UI</span>
+    <span class="chip chip--mint">EMAIL MARKETING</span>
+    <span class="chip chip--coral">MOTION GRAPHICS</span>
+	  <!-- Repites el bloque para que el bucle infinito no se corte -->
+    <span class="chip chip--coral">LANDING PAGES</span>
+    <span class="chip chip--lavender">DISEÑO DIGITAL</span>
+    <span class="chip chip--ink">CAMPAÑAS E-COMMERCE</span>
+    <span class="chip chip--yellow">UX/UI</span>
+    <span class="chip chip--mint">EMAIL MARKETING</span>
+    <span class="chip chip--coral">MOTION GRAPHICS</span>
+  </div>
+</div>
+  <h2 class="section-title js-reveal">Proyectos</h2>
 
-  function cerrarModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
+  <div class="categories__grid">
 
-  document.querySelectorAll(".cat-card").forEach(card => {
-    card.addEventListener("click", () => abrirModal(card.dataset.categoria));
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        abrirModal(card.dataset.categoria);
-      }
-    });
-  });
+  <article class="cat-card cat-card--coral js-reveal" data-categoria="web" tabindex="0" style="--reveal-delay:0s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--arrows" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Web</span>
+    </div>
+   
+  </article>
 
-  modalClose.addEventListener("click", cerrarModal);
-  modal.addEventListener("click", (e) => { if (e.target === modal) cerrarModal(); });
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("is-open")) cerrarModal();
-  });
-})();
+  <article class="cat-card cat-card--ink js-reveal" data-categoria="motion" tabindex="0" style="--reveal-delay:.08s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--star" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Motion Graphics<br>y Vídeo</span>
+    </div>
+   
+  </article>
+
+  <article class="cat-card cat-card--lavender js-reveal" data-categoria="posters" tabindex="0" style="--reveal-delay:.16s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--sun" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Posters</span>
+    </div>
+    
+  </article>
+
+  <article class="cat-card cat-card--yellow js-reveal" data-categoria="social" tabindex="0" style="--reveal-delay:.24s">
+    <div class="cat-card__frame">
+      <span class="cat-card__icon cat-card__icon--dots" aria-hidden="true">
+        <svg viewBox="0 0 60 60"><path d="M10 15 L28 30 L10 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M28 15 L46 30 L28 45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </span>
+      <span class="cat-card__big">Social Media</span>
+    </div>
+    
+  </article>
+
+</div>
+</section>
+
+<!-- ===== SOBRE MÍ ===== -->
+<section id="sobre-mi" class="about">
+  <div class="about__text js-reveal">
+    <h2 class="section-title">Sobre mí</h2>
+    <p>
+      Soy diseñadora gráfica y digital con base en Madrid. Actualmente diseño y desarrollo landing pages,
+      campañas promocionales y contenido visual para el departamento web de Phone House, produciendo entre
+      70 y 75 piezas al mes para web, redes sociales, email marketing y Google Ads. Aplico criterios de
+      UX/UI en cada proyecto para que el diseño no solo se vea bien, sino que funcione.
+    </p>
+    <ul class="about__skills">
+      <li>Landing Pages</li>
+      <li>UX/UI</li>
+      <li>Campañas multicanal</li>
+      <li>Email Marketing</li>
+      <li>Google Ads</li>
+      <li>Motion Graphics</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== CV ===== -->
+<section id="cv" class="cv">
+  <h2 class="section-title js-reveal">Mi trayectoria</h2>
+
+  <div class="cv__download js-reveal">
+    <a href="LuciaRubio_CV.pdf" download class="sticker sticker--coral cv__download-btn">Ver CV completo ↓</a>
+  </div>
+
+  <div class="cv__grid">
+
+    <div class="cv__col js-reveal">
+      <h3 class="cv__col-title">Experiencia</h3>
+      <ol class="cv__timeline">
+        <li>
+          <span class="chip chip--coral cv__date">2024 — Actualidad</span>
+          <h4>Diseñadora gráfica · Phone House</h4>
+          <p>Diseño y desarrollo de 4 landings mensuales para campañas promocionales y lanzamientos de producto. Creación y adaptación de 70–75 piezas gráficas al mes para web, redes sociales, email marketing y Google Ads. Aplicación de HTML y criterios de UX/UI para optimizar la experiencia y el rendimiento.</p>
+        </li>
+        <li>
+          <span class="chip chip--lavender cv__date">2022 — 2023</span>
+          <h4>Asesora de ventas · Cool The Sack</h4>
+          <p>Asesoramiento personalizado al cliente en moda y complementos. Gestión de ventas, devoluciones, cambios e incidencias. Coordinación de horarios de equipo, control de stock y apoyo en visual merchandising.</p>
+        </li>
+        <li>
+          <span class="chip chip--mint cv__date">2022</span>
+          <h4>Diseñadora audiovisual · Pixboy Studio</h4>
+          <p>Edición de vídeo y sonido para proyectos audiovisuales. Organización y gestión de material de producción, renderizado de proyectos 3D y apoyo en motion graphics durante la postproducción.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="cv__col cv__col--side js-reveal" style="--reveal-delay:.1s">
+      <h3 class="cv__col-title">Formación</h3>
+      <ul class="cv__list">
+        <li><span class="cv__dot"></span>Máster en Diseño Gráfico — CEI (2023)</li>
+        <li><span class="cv__dot"></span>Máster en Motion Graphics — Trazos (2021)</li>
+        <li><span class="cv__dot"></span>Proyectos Audiovisuales y Espectáculos — UFV/CETYS (2018–2020)</li>
+      </ul>
+
+      <h3 class="cv__col-title">Formación complementaria</h3>
+      <ul class="cv__list">
+        <li><span class="cv__dot"></span>Fundamentos de Angular — Escuela de Empresa (2024–2025)</li>
+        <li><span class="cv__dot"></span>ChatGPT para el Trabajo Diario — Escuela de Empresa (2024–2025)</li>
+      </ul>
+
+      <h3 class="cv__col-title">Competencias</h3>
+      <div class="cv__skills">
+        <span class="sticker sticker--yellow">Photoshop</span>
+        <span class="sticker sticker--coral">Illustrator</span>
+        <span class="sticker sticker--lavender">InDesign</span>
+        <span class="sticker sticker--mint">Premiere Pro</span>
+        <span class="sticker sticker--yellow">After Effects</span>
+        <span class="sticker sticker--coral">HTML/CSS</span>
+        <span class="sticker sticker--lavender">UX/UI</span>
+        <span class="sticker sticker--mint">Google Ads</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<footer id="contacto" class="contact js-reveal">
+  <h2 class="section-title">Hablemos</h2>
+  <p class="contact__text">¿Tienes un proyecto en mente? Escríbeme y lo revisamos juntas.</p>
+  <div class="contact__actions">
+    <a href="mailto:lurbmg@gmail.com" class="btn btn--primary">Contactar</a>
+    <a href="#" class="btn btn--ghost">Instagram</a>
+    <a href="#" class="btn btn--ghost">LinkedIn</a>
+  </div>
+  <p class="contact__footnote">© 2026 Lucía Rubio — Diseño Gráfico y Digital</p>
+  <div class="contact__stripe" aria-hidden="true">
+    <span class="stripe--coral"></span><span class="stripe--lavender"></span><span class="stripe--mint"></span><span class="stripe--yellow"></span><span class="stripe--ink"></span>
+  </div>
+</footer>
+<div id="categoryModal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-glass__close" id="modalClose" aria-label="Cerrar">&times;</button>
+    <div class="modal-glass__header">
+      <span class="modal-glass__eyebrow" id="modalEyebrow"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalIntro"></p>
+    </div>
+    <div class="modal-glass__gallery" id="modalGallery"></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
