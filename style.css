@@ -792,7 +792,7 @@ section { padding: 96px 6vw; }
 .about {
   display: flex;
   justify-content: center;
-  height: 450px;
+  min-height: 450px;
   padding-top: 0;
 }
 
@@ -1055,6 +1055,7 @@ ul.about__skills li:hover {
   .hero__media { flex-basis: auto; }
   .hero__logo { width: 170px; }
   .categories__grid { grid-template-columns: 1fr; gap: 32px; }
+  .cat-card__frame { aspect-ratio: 2.4 / 1; padding: 22px; }
   .modal-glass { padding: 28px; }
   .nav__links { gap: 18px; font-size: .82rem; }
   .nav__cta { padding: 6px 14px; }
