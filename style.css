@@ -842,7 +842,7 @@ section { padding: 96px 6vw; }
 .about {
   display: flex;
   justify-content: center;
-  height: 450px;
+  min-height: auto;
   padding-top: 0;
 }
 
@@ -901,6 +901,7 @@ ul.about__skills li:hover {
   background: var(--dark-brown);
   color: var(--bg-main);
   border-radius: 32px 32px 0 0;
+  padding: 80px 6vw 40px;
 }
 
 .contact .section-title { color: var(--bg-main); }
@@ -970,7 +971,7 @@ ul.about__skills li:hover {
 .stripe--ink { background: var(--bg-main); }
 
 /* =========================================================
-   CV
+   CV (CORREGIDO PARA EVITAR FLOTACIÓN VISUAL)
    ========================================================= */
 .cv {
   max-width: 1000px;
@@ -996,7 +997,8 @@ ul.about__skills li:hover {
 .cv__grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: 56px;
+  gap: 48px;
+  align-items: start; /* Mantiene ambas columnas alineadas en la parte superior */
 }
 
 .cv__col-title {
@@ -1095,9 +1097,9 @@ ul.about__skills li:hover {
 .cv__skills .sticker:hover { animation: wiggle 1.2s ease-in-out infinite; }
 
 /* =========================================================
-   RESPONSIVE & MOTION
+   RESPONSIVE & MOTION (BREAKPOINTS CORREGIDOS)
    ========================================================= */
-@media (max-width: 900px) {
+@media (max-width: 850px) {
   section { padding: 64px 6vw; }
   .hero__inner { flex-direction: column-reverse; gap: 40px; text-align: center; }
   .hero__content { max-width: 100%; }
@@ -1107,14 +1109,9 @@ ul.about__skills li:hover {
   .categories__grid { grid-template-columns: 1fr; gap: 32px; }
   .modal-glass { padding: 28px; }
   .nav__links { gap: 18px; font-size: .82rem; }
+  .nav__links a:not(.nav__cta) { display: none; } /* Ocultar enlaces del nav solo en móvil */
   .nav__cta { padding: 6px 14px; }
   .cv__grid { grid-template-columns: 1fr; gap: 48px; }
-}
-
-@media (max-width: 1424px) {
-  .nav { padding: 18px 5vw; }
-  .nav__links a:not(.nav__cta) { display: none; }
-  .hero { padding-top: 48px; padding-bottom: 56px; }
   .modal-glass__gallery { grid-template-columns: 1fr; }
   .modal-glass__item img,
   .modal-glass__media { height: 210px; }
