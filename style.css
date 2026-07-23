@@ -496,33 +496,43 @@ section { padding: 96px 6vw; }
   font-size: .92rem;
 }
 
-/* Bloqueo de tarjetas deshabilitadas */
+/* =========================================================
+   ESTADO DESHABILITADO / EN OBRAS (CON DESENFOQUE)
+   ========================================================= */
+
+/* 1. Bloqueo de interacción */
 .cat-card.is-disabled {
   cursor: not-allowed;
-  pointer-events: none; /* Bloquea cualquier clic */
+  pointer-events: none; /* Evita clics */
 }
 
-/* 1. Desenfoca el fondo de la caja (texto, icono, etc.) */
+/* 2. Desenfocar el contenido del fondo (texto e icono) sin romper el layout */
+.cat-card.is-disabled .cat-card__frame {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aplicamos el desenfoque a todo el interior del frame */
 .cat-card.is-disabled .cat-card__big,
 .cat-card.is-disabled .cat-card__icon {
-  filter: blur(4px);
-  opacity: 0.6;
+  filter: blur(5px);
+  opacity: 0.5;
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-/* Evita que la tarjeta haga animación de hover al pasar el ratón */
+/* Evitamos que haga la animación de hover */
 .cat-card.is-disabled:hover .cat-card__frame {
   border-radius: var(--radius) !important;
   transform: none !important;
   box-shadow: 6px 6px 0 var(--azure) !important;
 }
 
-/* 2. Estilo del cartel flotante nítido y enfocado */
+/* 3. Píldora "ACTUALIZANDO" (Nítida y en primer plano) */
 .badge-wip {
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 10px 24px;
+  padding: 10px 22px;
   background-color: var(--azure);
   color: var(--dark-brown);
   border: 2px solid var(--dark-brown);
@@ -533,11 +543,11 @@ section { padding: 96px 6vw; }
   letter-spacing: 0.05em;
   white-space: nowrap;
   box-shadow: 4px 4px 0 rgba(71, 47, 38, 0.25);
-  z-index: 10;
-  filter: none !important; /* Garantiza que la píldora quede 100% nítida */
+  z-index: 20;
+  filter: none !important; /* Mantiene la píldora 100% enfocada */
 }
 
-/* Inclinaciones exactas de tu captura */
+/* Inclinaciones estilo boceto */
 .badge-wip--left {
   transform: translate(-50%, -50%) rotate(-5deg);
 }
