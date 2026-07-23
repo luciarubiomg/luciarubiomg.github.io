@@ -34,13 +34,13 @@
         }
       ]
     },
+
     motion: {
       eyebrow: "Categoría · Motion Graphics y Vídeo",
       title: "Motion Graphics y Vídeo",
       intro: "Piezas animadas y contenido audiovisual diseñado para potenciar campañas digitales y redes sociales.",
       projects: [
         {
-          // Puedes usar 'video' para archivos MP4 o 'img' si es una portada/gif
           video: "assets/video/motion/reel.mp4",
           img: "https://i.ibb.co/bMn9PvbZ/MOTION.png",
           title: "Motion para campaña",
@@ -53,30 +53,30 @@
         }
       ]
     },
-posters: {
+
+    posters: {
       eyebrow: "Categoría · Posters",
       title: "Posters & Gráfica Impresa",
       intro: "Sección en mantenimiento. Estoy actualizando el portfolio con los proyectos más recientes.",
       projects: [
         {
-          img: "assets/img/en_obras.jpg", // <-- Aquí pon la ruta de tu imagen estilo 'en obras'
+          img: "assets/img/en_obras.jpg",
           title: "Sección en proceso de actualización 🛠️",
           desc: "Muy pronto podrás ver los nuevos diseños de cartelería y gráfica impresa."
         }
       ]
     },
+
     social: {
       eyebrow: "Categoría · Social Media",
       title: "Social Media & Banners",
       intro: "¡Me están actualizando! Estoy preparando los mejores contenidos para mostrarte.",
       projects: [
         {
-          img: "assets/img/en_obras.jpg", // <-- Puedes usar la misma imagen o una diferente
+          img: "assets/img/en_obras.jpg",
           title: "Contenido en preparación 🚧",
           desc: "Estoy seleccionando las mejores piezas y campañas para redes sociales."
-        }
-      ]
-    }
+        },
         {
           img: "https://i.ibb.co/vCLfhWNV/IA.png",
           title: "Contenido creativo & Ads",
@@ -102,15 +102,16 @@ posters: {
     modalTitle.textContent = data.title;
     modalIntro.textContent = data.intro;
 
-    // Generar dinámicamente imágenes o vídeos según lo configurado en cada proyecto
     modalGallery.innerHTML = data.projects.map(p => {
       let mediaHTML = "";
+
       if (p.video) {
         mediaHTML = `
-          <video controls playsinline poster="${p.img || ''}">
+          <video controls playsinline poster="${p.img || ""}">
             <source src="${p.video}" type="video/mp4">
             Tu navegador no soporta la reproducción de vídeo.
-          </video>`;
+          </video>
+        `;
       } else {
         mediaHTML = `<img src="${p.img}" alt="${p.title}" loading="lazy">`;
       }
@@ -139,7 +140,8 @@ posters: {
 
   document.querySelectorAll(".cat-card").forEach(card => {
     card.addEventListener("click", () => abrirModal(card.dataset.categoria));
-    card.addEventListener("keydown", (e) => {
+
+    card.addEventListener("keydown", e => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         abrirModal(card.dataset.categoria);
@@ -148,8 +150,15 @@ posters: {
   });
 
   modalClose.addEventListener("click", cerrarModal);
-  modal.addEventListener("click", (e) => { if (e.target === modal) cerrarModal(); });
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("is-open")) cerrarModal();
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) cerrarModal();
   });
+
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) {
+      cerrarModal();
+    }
+  });
+
 })();
