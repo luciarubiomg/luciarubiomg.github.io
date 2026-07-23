@@ -496,6 +496,56 @@ section { padding: 96px 6vw; }
   font-size: .92rem;
 }
 
+/* Bloqueo de tarjetas deshabilitadas */
+.cat-card.is-disabled {
+  cursor: not-allowed;
+  pointer-events: none; /* Bloquea cualquier clic */
+}
+
+/* 1. Desenfoca el fondo de la caja (texto, icono, etc.) */
+.cat-card.is-disabled .cat-card__big,
+.cat-card.is-disabled .cat-card__icon {
+  filter: blur(4px);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Evita que la tarjeta haga animación de hover al pasar el ratón */
+.cat-card.is-disabled:hover .cat-card__frame {
+  border-radius: var(--radius) !important;
+  transform: none !important;
+  box-shadow: 6px 6px 0 var(--azure) !important;
+}
+
+/* 2. Estilo del cartel flotante nítido y enfocado */
+.badge-wip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px 24px;
+  background-color: var(--azure);
+  color: var(--dark-brown);
+  border: 2px solid var(--dark-brown);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 rgba(71, 47, 38, 0.25);
+  z-index: 10;
+  filter: none !important; /* Garantiza que la píldora quede 100% nítida */
+}
+
+/* Inclinaciones exactas de tu captura */
+.badge-wip--left {
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.badge-wip--right {
+  transform: translate(-50%, -50%) rotate(5deg);
+}
+
 /* Botón "Ver proyectos" */
 .btn-categoria {
   display: inline-flex;
